@@ -1,8 +1,9 @@
-# AV-fast_UDiffSE: Unsupervised Diffusion-based Audio-Visual Speech Enhancement
+# Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement
+
 
 Official PyTorch implementation of:
 
-> J-E. Ayilo, M. Sadeghi, R. Serizel and X. Alameda-Pineda "Diffusion-based Unsupervised Audio-visual Speech Enhancement" accepted at IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP), 2025.
+> Colombe Mboungou, Mostafa Sadeghi, Jean-Eudes Ayilo, Romain Serizel "Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement" accepted at IEEE Interspeech, 2026.
 
 
 ## Installation
@@ -37,18 +38,25 @@ It could be interesting to take a look at [./preprocessing](./preprocessing) to 
 
 ## Training
 
-- Training the unconditional audio only model used in the paper for UDiffSE and AO-UDiffSE+ (Table 1 of the paper)
+- Training the conditional audio-visual model with contrastive alignment used in the paper
 
 ```bash
 python train.py \
 	--transform_type exponent \
 	--format tcd-timit \
-	--batch_size 4 \
-	--vfeat_processing_order default \
-	--video_feature_type resnet \
-	--backbone ncsnpp28M \
-	--audio_only \
-	--run_id id_for_your_audio_only_model
+	--batch_size 8 \
+	--gpus 2 \
+	--regularization_warmup_epochs 100 \
+	--regularization_beta0 1000 \
+	--alpha_t_decay step \
+	--vfeat_processing_order cut_extract \
+	--video_feature_type avhubert \
+	--backbone ncsnpp_continueconcat_attn_masking_noising_av_6m \
+	--fusion concat_attn_masking_light \
+	--no_project_video_feature \
+	--p 0.0 \
+	--fusion_level enc_dec \
+	--run_id av_diffse_late_fusion_avhubert_icp52_6M_warmup_100_beta0_1000_alpha_t_step_unweighted
 ```
 
 To run a full size (unconditional) model for the audio-only case, similar to the NCSN++ 65M paramaters based, just change `ncsnpp28M` into `ncsnpp`
@@ -79,8 +87,6 @@ To run the full size model for av, just change `ncsnpp_continueconcat_attn_maski
 	- 'early' for early fusion
 	- 'concat_attn_masking_light' for late fusion
 	- 'concat_attn_masking_light_early_late' for mixed fusion (both early and late fusion using the same visual embedding you specified)
-
-- Note: To train and evaluate FlowAVSE model, please refer to its authors [repository](https://github.com/kaistmm/FlowAVSE)
 
 
 ## Pretrained checkpoints

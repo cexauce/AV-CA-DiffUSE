@@ -1,0 +1,168 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*..pyc
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# Pycharm
+.idea/
+
+
+
+# Ignore all files in a specific folder
+temp/*
+
+# Ignore a specific folder
+derevdps/
+#sgmse/
+eval/results/
+#logs/
+
+# Pretrained Weights
+pretrained_weights/*
+!pretrained_weights/.keep
+
+# Data
+logs/*
+!data/.keep
+pretrained_models/*
+#*npy
+# Ignore a specific file
+#*.wav
+
+#ckpt
+
+sgmse/util/lipreading/data/lrw_resnet18_mctn_adamw_s3.pth.tar
+
+#
+OAR.*
+parrot.pkl
+wandb/*
+
+*.csv
+deljob.sh
+
+checkpoints/*
+# duplicate evaluation scripts
+eval/cloned_scripts/*
+eval/cloned_scripts_visual_ablation/*
+eval/launch_SE_ALL2.sh
+eval/launch_SE_ALL3.sh
+eval/launch_SE_ALL4.sh
+eval/launch_SE_ALL5.sh
+eval/launch_SE_ALL6.sh
+eval/launch_SE_ALL7.sh
+eval/launch_SE_ALL_datasets_avg_alpha.sh 
+
+
+eval/SE_eval2.sh
+eval/SE_eval3.sh
+eval/SE_eval4.sh
+eval/SE_eval5.sh
+eval/SE_eval6.sh
+eval/SE_eval7.sh
+
+eval/single_seg_launch_SE2.sh
+eval/single_seg_launch_SE3.sh
+eval/single_seg_launch_SE4.sh
+eval/single_seg_launch_SE5.sh
+eval/single_seg_launch_SE6.sh
+eval/single_seg_launch_SE7.sh
+ *.pth.tar

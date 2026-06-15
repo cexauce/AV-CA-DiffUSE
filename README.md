@@ -1,9 +1,9 @@
-# Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement
+# AV-CA-DiffUSE : Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement
 
 
 Official PyTorch implementation of:
 
-> Colombe Mboungou, Mostafa Sadeghi, Jean-Eudes Ayilo, Romain Serizel "Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement" accepted at IEEE Interspeech, 2026.
+> Colombe Mboungou, Mostafa Sadeghi, Jean-Eudes Ayilo, Romain Serizel "Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement" accepted at Interspeech 2026.
 
 
 ## Installation
@@ -11,11 +11,11 @@ Official PyTorch implementation of:
 After cloning this repository, create a virtual environment and install the package dependencies:
 
 ```bash
-cd fast_UdiffSE
+cd AV-CA-DiffUSE
 
-conda create -n myenv python=3.8.16
+conda create -n fastudiffse python=3.8.16
 
-conda activate newenv
+conda activate fastudiffse
 
 pip install -r requirements.txt
 ```
@@ -68,7 +68,7 @@ To run a full size (unconditional) model for the audio-only case, similar to the
 python train.py \
 	--transform_type exponent \
 	--format tcd-timit \
-	--batch_size 4 \
+	--batch_size 8 \
 	--vfeat_processing_order cut_extract \
 	--video_feature_type avhubert \
 	--backbone ncsnpp_continueconcat_attn_masking_noising_av_28m \
@@ -134,16 +134,11 @@ A demo notebook is available at [./demo.ipynb](./demo.ipynb) . This notebook pro
 
 ## Acknoledgements
 
-This repository is mainly derived from [SGMSE](https://github.com/sp-uhh/sgmse) and [UdiffSE](https://github.com/joanne-b-nortier/UdiffSE) repositories. We thank the authors for providing their codes. We also think [FlowAVSE](https://github.com/kaistmm/FlowAVSE) authors for making their code public.
+This repository is mainly derived from  [fast_UdiffSE](https://github.com/jeaneudesAyilo/fast_UdiffSE).
 
 
 ## Bibtex
 
 ```bibtex
-@article{ayilo2024diffusion,
-  title={Diffusion-based Unsupervised Audio-visual Speech Enhancement},
-  author={Ayilo, Jean-Eudes and Sadeghi, Mostafa and Serizel, Romain and Alameda-Pineda, Xavier},
-  journal={arXiv preprint arXiv:2410.05301},
-  year={2024}
-}
+The article will be published soon this summer. 
 ```

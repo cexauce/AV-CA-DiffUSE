@@ -23,9 +23,9 @@ python train.py \
 	--format tcd-timit \
 	--batch_size 8 \
 	--gpus 2 \
-	--no_wandb \
 	--regularization_warmup_epochs 100 \
 	--regularization_beta0 3000 \
+	--perceptron_before_fusion \
 	--alpha_t_decay step \
 	--vfeat_processing_order cut_extract \
 	--video_feature_type avhubert \
@@ -34,4 +34,5 @@ python train.py \
 	--no_project_video_feature \
 	--p 0.0 \
 	--fusion_level enc_dec \
-	--run_id av_diffse_late_fusion_avhubert_icp52_6M_warmup_100_beta0_3000_beta_t_step_unweighted_infonce_pretrained \
+	--run_id av_diffse_late_fusion_avhubert_icp52_6M_warmup_100_beta0_3000_alpha_t_step_v_perceptron \
+	#--dummy \ to debug

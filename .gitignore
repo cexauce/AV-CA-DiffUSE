@@ -166,3 +166,4 @@ eval/single_seg_launch_SE5.sh
 eval/single_seg_launch_SE6.sh
 eval/single_seg_launch_SE7.sh
  *.pth.tar
+.vscode/

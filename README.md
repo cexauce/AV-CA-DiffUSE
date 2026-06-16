@@ -24,12 +24,14 @@ pip install -r requirements.txt
 ```
 ## Repository Structure
 
+```
 ├── preprocessing/      Data preparation scripts
 ├── eval/               Evaluation scripts and metrics
 ├── sgmse/              Diffusion and fusion models
 ├── demo.ipynb          Demonstration notebook
 ├── train.py            Training entry point
 └── requirements.txt    Python dependencies
+```
 
 ## Data
 

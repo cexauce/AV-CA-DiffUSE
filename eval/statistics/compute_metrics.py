@@ -278,13 +278,13 @@ if __name__ == "__main__":
         ]
     elif args.dataset in [ "WSJ0", "VB"]:  
         if args.dataset =="WSJ0":
-            clean_root = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/WSJ0_SE/wsj0_si_et_05"
-            noisy_root = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/QUT_WSJ0/test"
+            clean_root = "/group_storage/corpus/source_separation/WSJ0_SE/wsj0_si_et_05"
+            noisy_root = "/group_storage/corpus/source_separation/QUT_WSJ0/test"
 
 
         elif args.dataset == "VB":
-            clean_root = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/VoiceBankDEMAND/clean_testset_wav_16k"
-            noisy_root = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/VoiceBankDEMAND/noisy_testset_wav_16k"
+            clean_root = "/group_storage/corpus/source_separation/VoiceBankDEMAND/clean_testset_wav_16k"
+            noisy_root = "/group_storage/corpus/source_separation/VoiceBankDEMAND/noisy_testset_wav_16k"
 
         # Load file json
         with open(args.data_dir, "r") as f:

@@ -158,13 +158,13 @@ def speech_enhance(params):
                         if params["dataset"] in ["TCD-DEMAND", "TCD-TIMIT", "TCD-TIMIT-small", "TCD-TIMIT-LowSNRs"]:
 
                             if enhance.video_feature_type in  ["resnet", "avhubert", "raw_image", "cogenav", "cogenav_after_transformer"]: 
-                                video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/TCD-TIMIT/test/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"                
+                                video_path  = "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/TCD-TIMIT/test/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"                
                             
                             elif enhance.video_feature_type in  ["flow_avse"]: 
-                                video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/TCD-TIMIT/test/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"                                             
+                                video_path  = "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/TCD-TIMIT/test/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"                                             
 
                             elif enhance.video_feature_type in  ["avhubert_pre"]: 
-                                video_path = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/test_data_NTCD/clean/{speaker_id}/{filename}_avhubert.npy"                                                                          
+                                video_path = "/group_storage/corpus/audio_visual/TCD-TIMIT/test_data_NTCD/clean/{speaker_id}/{filename}_avhubert.npy"                                                                          
 
                             
                             elif enhance.video_feature_type in  ["cogenav_pre"]: 
@@ -174,10 +174,10 @@ def speech_enhance(params):
                         elif params["dataset"] in ["LRS3-NTCD"]:                            
 
                             if enhance.video_feature_type in  ["resnet", "avhubert", "raw_image", "cogenav", "cogenav_after_transformer"]: 
-                                video_path  =  "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/LRS3/test/{speaker_id}/{filename}_mouthcrop.mp4"             
+                                video_path  =  "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/LRS3/test/{speaker_id}/{filename}_mouthcrop.mp4"             
                             
                             elif enhance.video_feature_type in  ["flow_avse"]: 
-                                video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/LRS3/test/{speaker_id}/{filename}_mouthcrop.mp4"
+                                video_path  = "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/LRS3/test/{speaker_id}/{filename}_mouthcrop.mp4"
                     
                             elif enhance.video_feature_type in  ["avhubert_pre"]: 
                                 video_path  = "/srv/storage/talc3@storage4.nancy.grid5000.fr/multispeech/calcul/users/cmboungo/avhubert_pre/LRS3/test_data/{speaker_id}/{filename}_avhubert.npy"
@@ -349,14 +349,14 @@ if __name__ == "__main__":
     params = Options().get_params()
 
     if params["dataset"] == "VB":
-        params["noisy_root"] = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/VoiceBankDEMAND/noisy_testset_wav_16k"
-        params["clean_root"] = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/VoiceBankDEMAND/clean_testset_wav_16k"
+        params["noisy_root"] = "/group_storage/corpus/source_separation/VoiceBankDEMAND/noisy_testset_wav_16k"
+        params["clean_root"] = "/group_storage/corpus/source_separation/VoiceBankDEMAND/clean_testset_wav_16k"
     elif params["dataset"] == "WSJ0":
         params["noisy_root"] = (
-            "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/QUT_WSJ0/test"
+            "/group_storage/corpus/source_separation/QUT_WSJ0/test"
         )
         params["clean_root"] = (
-            "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/WSJ0_SE/wsj0_si_et_05"
+            "/group_storage/corpus/source_separation/WSJ0_SE/wsj0_si_et_05"
         )
 
     params["save_dir"] = str(

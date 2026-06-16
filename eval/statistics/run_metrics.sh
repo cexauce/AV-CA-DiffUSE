@@ -23,7 +23,7 @@ ENHANCED_DIR="/srv/storage/talc3@storage4.nancy.grid5000.fr/multispeech/calcul/u
 # ENHANCED_DIR="/group_calcul/calcul/users/jayilo/ICP_52_results/grat/LRS3-NTCD/flow_avse_enh_lrs3_ntcd_best_sisdr/second_stage"
 
 
-DATA_DIR="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/ICP52/TCD_DEMAND/new_tcd_demand_test.pkl"
+DATA_DIR="/group_storage/corpus/source_separation/ICP52/TCD_DEMAND/new_tcd_demand_test.pkl"
 #"/group_calcul/calcul/users/jayilo/mydiffuse/eval/new_tcd_demand_test.pkl"
 # DATA_DIR="/group_corpus/corpus/source_separation/ICP52/LRS3_NTCD/new_lrs3_ntcd_test.pkl"
 

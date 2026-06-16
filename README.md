@@ -38,7 +38,7 @@ It could be interesting to take a look at [./preprocessing](./preprocessing) to 
 
 ## Training
 
-- Training the conditional audio-visual model with contrastive alignment used in the paper
+- Training the conditional audio-visual model with audio-visual contrastive alignment used in the paper
 
 ```bash
 python train.py \
@@ -132,7 +132,7 @@ python eval/statistics/compute_metrics.py \
 A demo notebook is available at [./demo.ipynb](./demo.ipynb) . This notebook provides a demonstration of sampling from clean speech prior learned via a diffusion-based generative model unconditionned or conditionned on lip video, followed by speech enhancement of a test noisy speech signal.
 
 
-## Acknoledgements
+## Acknowledgements
 
 This repository is mainly derived from  [fast_UdiffSE](https://github.com/jeaneudesAyilo/fast_UdiffSE).
 
@@ -140,5 +140,5 @@ This repository is mainly derived from  [fast_UdiffSE](https://github.com/jeaneu
 ## Bibtex
 
 ```bibtex
-The article will be published soon this summer. 
+The article will be published soon this summer on arxiv, Interspeech and HAL. 
 ```

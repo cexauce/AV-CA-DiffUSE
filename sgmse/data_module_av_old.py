@@ -80,7 +80,7 @@ def my_pad(video, target_num):
     return res
 
 
-def getTIMITclean(subset, data_dir="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/", t='_data_NTCD'):
+def getTIMITclean(subset, data_dir="/group_storage/corpus/audio_visual/TCD-TIMIT/", t='_data_NTCD'):
     if subset == 'valid':
         subset = 'val'
     t1 = subset + t
@@ -89,7 +89,7 @@ def getTIMITclean(subset, data_dir="/srv/storage/talc@storage4.nancy.grid5000.fr
     clean_files = sorted([os.path.join(root, name) for root, dirs, files in os.walk(os.path.join(data_dir, t1)) for name in files if name.endswith('.wav')])  
     return clean_files
 
-def getLRS3clean(subset, data_dir="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/LRS3_audios/"):
+def getLRS3clean(subset, data_dir="/group_storage/corpus/audio_visual/LRS3_audios/"):
     if subset in ['train', 'valid']:
         subset = 'trainval'
     clean_files = sorted([os.path.join(root, name) for root, dirs, files in os.walk(os.path.join(data_dir, subset)) for name in files if name.endswith('.wav')])  
@@ -124,7 +124,7 @@ class Specs(Dataset):
             self.clean_files = sorted(glob(join(data_dir, subset) + '/clean/*.wav'))
 
         elif format == "tcd-timit": 
-            data_dir="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/" 
+            data_dir="/group_storage/corpus/audio_visual/TCD-TIMIT/" 
             t='_data_NTCD'
             self.clean_files = getTIMITclean(subset, data_dir, t)
             self.fps = 25
@@ -134,7 +134,7 @@ class Specs(Dataset):
 
      
             #video_data_dir="/srv/storage/talc3@storage4.nancy.grid5000.fr/multispeech/calcul/users/cmboungo/avhubert/"
-            audio_dir="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/LRS3_audios/"
+            audio_dir="/group_storage/corpus/audio_visual/LRS3_audios/"
             print("format : ", format)
 
             
@@ -146,7 +146,7 @@ class Specs(Dataset):
 
 
         elif format == "wsj0":
-            data_dir = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/speech_recognition/wsj0_wav"
+            data_dir = "/group_storage/corpus/speech_recognition/wsj0_wav"
             dic = {
                 "train": "**/si_tr_s/**/*.wav",
                 "valid": "**/si_dt_05/**/*.wav",
@@ -163,24 +163,24 @@ class Specs(Dataset):
             ##use the mouths cropped with index (48,68) and 88*88 roi,            
             if self.video_feature_type in ["avhubert", "resnet", "raw_image",]:
                 self.video_size= 88
-                self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"                
+                self.video_path  = "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"                
                             
             if self.video_feature_type == "flow_avse":
                 self.video_size= 112
-                self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4" 
+                self.video_path  = "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4" 
 
             if self.video_feature_type in ["resnet_pre"]:
                 if subset == "valid":
-                    self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/val_data_NTCD/{speaker_id}/{filename}RawVF.npy"
+                    self.video_path  = "/group_storage/corpus/audio_visual/TCD-TIMIT/val_data_NTCD/{speaker_id}/{filename}RawVF.npy"
                 else:
-                    self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/{subset}_data_NTCD/{speaker_id}/{filename}RawVF.npy"
+                    self.video_path  = "/group_storage/corpus/audio_visual/TCD-TIMIT/{subset}_data_NTCD/{speaker_id}/{filename}RawVF.npy"
                 self.video_size= 512
 
             if self.video_feature_type in ["avhubert_pre"]:
                 if subset == "valid":
-                    self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/val_data_NTCD/{speaker_id}/{filename}_avhubert_fps30.npy"
+                    self.video_path  = "/group_storage/corpus/audio_visual/TCD-TIMIT/val_data_NTCD/{speaker_id}/{filename}_avhubert_fps30.npy"
                 else:
-                    self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/{subset}_data_NTCD/{speaker_id}/{filename}_avhubert_fps30.npy"
+                    self.video_path  = "/group_storage/corpus/audio_visual/TCD-TIMIT/{subset}_data_NTCD/{speaker_id}/{filename}_avhubert_fps30.npy"
                 self.video_size= 768                
 
             if self.video_feature_type in ["cogenav"]:

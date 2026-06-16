@@ -17,7 +17,7 @@ from sgmse.util.utils_video import load_array, resample_video_numpy, get_mouthro
 
 def getTIMITclean(
     subset,
-    data_dir="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/",
+    data_dir="/group_storage/corpus/audio_visual/TCD-TIMIT/",
     t="_data_NTCD",
 ):
     if subset == "valid":
@@ -173,7 +173,7 @@ class Specs(Dataset):
             self.clean_files = sorted(glob(join(data_dir, subset) + "/clean/*.wav"))
             # self.noisy_files = sorted(glob(join(data_dir, subset) + '/noisy/*.wav'))
         elif format == "tcd-timit":
-            data_dir = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/"
+            data_dir = "/group_storage/corpus/audio_visual/TCD-TIMIT/"
             t = "_data_NTCD"
             self.clean_files = getTIMITclean(subset, data_dir, t)
 
@@ -181,7 +181,7 @@ class Specs(Dataset):
             # t='Babble/15/volunteers'
             # self.noisy_files = getTIMITnoisy(subset, data_dir, t)
         elif format == "wsj0":
-            data_dir = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/speech_recognition/wsj0_wav"
+            data_dir = "/group_storage/corpus/speech_recognition/wsj0_wav"
             dic = {
                 "train": "**/si_tr_s/**/*.wav",
                 "valid": "**/si_dt_05/**/*.wav",
@@ -205,14 +205,14 @@ class Specs(Dataset):
                 ##use the mouths cropped with index (48,68) and 88*88 roi,            
                 if video_feature_type in ["avhubert", "resnet", "raw_image","cogenav", "cogenav_after_transformer"]: #$
                     self.video_size=88
-                    self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4" 
+                    self.video_path  = "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4" 
                     #"/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_48_68_size_88_88/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"  
 
                                       
                                 
                 if video_feature_type == "flow_avse":
                     self.video_size=112
-                    self.video_path  = "/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"
+                    self.video_path  = "/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4"
                     #"/group_storage/corpus/audio_visual/CROPPED_MOUTH_ldmark_28_68_size_112_112/TCD-TIMIT/{subset}/{speaker_id}/straightcam/{filename}_mouthcrop.mp4" 
                 
                 self.fps = 25

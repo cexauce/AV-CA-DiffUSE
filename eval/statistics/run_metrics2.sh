@@ -31,13 +31,13 @@ DATASET="TCD-DEMAND"
 if [ "$DATASET" = "WSJ0" ]; then
     DATA_DIR="./eval/wsj_test.json"
 elif [ "$DATASET" = "TCD-TIMIT-small" ]; then
-    DATA_DIR="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/test_data_NTCD/test_data_540.pkl"
+    DATA_DIR="/group_storage/corpus/audio_visual/TCD-TIMIT/test_data_NTCD/test_data_540.pkl"
 elif [ "$DATASET" = "TCD-TIMIT" ]; then
-    DATA_DIR="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/audio_visual/TCD-TIMIT/test_data_NTCD/test_data_5.pkl"
+    DATA_DIR="/group_storage/corpus/audio_visual/TCD-TIMIT/test_data_NTCD/test_data_5.pkl"
 elif [ "$DATASET" = "TCD-DEMAND" ]; then
-    DATA_DIR="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/ICP52/TCD_DEMAND/new_tcd_demand_test.pkl"
+    DATA_DIR="/group_storage/corpus/source_separation/ICP52/TCD_DEMAND/new_tcd_demand_test.pkl"
 elif [ "$DATASET" = "LRS3-NTCD" ]; then
-    DATA_DIR="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/ICP52/LRS3_NTCD/new_lrs3_ntcd_test.pkl"
+    DATA_DIR="/group_storage/corpus/source_separation/ICP52/LRS3_NTCD/new_lrs3_ntcd_test.pkl"
 elif [ "$DATASET" = "TCD-DEMAND-LowSNRs" ]; then
     DATA_DIR="/srv/storage/talc3@storage4.nancy.grid5000.fr/multispeech/calcul/users/msadeghi/pytorch/SE-Diffusion/LipVoicer/eval/tcd_demand_test_low_snrs.pkl"
 elif [ "$DATASET" = "LRS3-DEMAND-LowSNRs" ]; then
@@ -45,7 +45,7 @@ elif [ "$DATASET" = "LRS3-DEMAND-LowSNRs" ]; then
 elif [ "$DATASET" = "LRS3-NTCD-LowSNRs" ]; then
     DATA_DIR="/srv/storage/talc3@storage4.nancy.grid5000.fr/multispeech/calcul/users/msadeghi/pytorch/SE-Diffusion/LipVoicer/eval/lrs3_ntcd_test_low_snrs.pkl"
 elif [ "$DATASET" = "VB" ]; then
-    DATA_DIR="/srv/storage/talc@storage4.nancy.grid5000.fr/multispeech/corpus/source_separation/VoiceBankDEMAND/vb_dmd.json"
+    DATA_DIR="/group_storage/corpus/source_separation/VoiceBankDEMAND/vb_dmd.json"
 else
     echo "Unknown dataset: $DATASET"
     exit 1  # Exit with an error if the dataset is not recognized

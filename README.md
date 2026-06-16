@@ -38,7 +38,7 @@ It could be interesting to take a look at [./preprocessing](./preprocessing) to 
 
 ## Training
 
-- Training the conditional audio-visual model with audio-visual contrastive alignment used in the paper
+- Training the conditional audio-visual model with audio-visual contrastive alignment speech enhancement model introduced in the paper
 
 ```bash
 python train.py \
@@ -48,6 +48,7 @@ python train.py \
 	--gpus 2 \
 	--regularization_warmup_epochs 100 \
 	--regularization_beta0 1000 \
+	--perceptron_before_fusion \
 	--alpha_t_decay step \
 	--vfeat_processing_order cut_extract \
 	--video_feature_type avhubert \
@@ -59,7 +60,6 @@ python train.py \
 	--run_id av_diffse_late_fusion_avhubert_icp52_6M_warmup_100_beta0_1000_alpha_t_step_unweighted
 ```
 
-To run a full size (unconditional) model for the audio-only case, similar to the NCSN++ 65M paramaters based, just change `ncsnpp28M` into `ncsnpp`
 
 - Training the conditional audio-visual model used in the paper for AV-UDiffSE and AV-UDiffSE+ (Table 1 of the paper)
 
@@ -76,22 +76,18 @@ python train.py \
 	--no_project_video_feature \
 	--p 0.0 \
 	--fusion_level enc_dec \
-	--run_id id_for_your_auido_visual_model
+	--run_id av_diffse_late_fusion_avhubert_icp52_6M
 ```
 
 
-To run the full size model for av, just change `ncsnpp_continueconcat_attn_masking_noising_av_28m` into `ncsnpp_continueconcat_attn_masking_noising`
 
-
-- To choose your fusion method, use the fusion input argument :
-	- 'early' for early fusion
-	- 'concat_attn_masking_light' for late fusion
-	- 'concat_attn_masking_light_early_late' for mixed fusion (both early and late fusion using the same visual embedding you specified)
 
 
 ## Pretrained checkpoints
+
  
 The checkpoint of the audio-only and the audiovisual diffusion models trained on TCD-TIMIT clean speech in the paper are available following these links:
+- [audiovisual-contrastive-alignment](https://drive.google.com/file/d/1MaDukx37NigLupGUQ0QlzY7D75L0h3yl/view?usp=drive_link)
 - [audio-only ckpt](https://huggingface.co/jeaneudesAyilo/files_for_fast_UdiffSE/resolve/main/aonly_tcd_speech_modeling_default_28M.ckpt)
 - [audiovisual ckpt](https://huggingface.co/jeaneudesAyilo/files_for_fast_UdiffSE/resolve/main/av_tcd_speech_modeling_concat_attn_masking_light_avhubert_p0_28M_enc_dec.ckpt)
 
@@ -141,4 +137,6 @@ This repository is mainly derived from  [fast_UdiffSE](https://github.com/jeaneu
 
 ```bibtex
 The article will be published soon this summer on arxiv, Interspeech and HAL. 
+
+{Colombe Mboungou, Mostafa Sadeghi, Jean-Eudes Ayilo, Romain Serizel. Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement. INTERSPEECH, Sep 2026, Sydney, Australia. ⟨hal-05655180⟩}
 ```

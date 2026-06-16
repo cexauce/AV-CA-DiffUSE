@@ -1,10 +1,13 @@
-# AV-CA-DiffUSE : Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement
+## Overview
+Official pytorch implementation of the paper AV-CA-DiffUSE : Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement.
+AV-CA-DiffUSE extends AV-UDiffSE by introducing an explicit
+audio-visual contrastive alignment objective during training.
 
-
-Official PyTorch implementation of:
-
-> Colombe Mboungou, Mostafa Sadeghi, Jean-Eudes Ayilo, Romain Serizel "Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement" accepted at Interspeech 2026.
-
+The contrastive loss encourages stronger correspondence between
+audio and visual representations while preserving the diffusion-based
+speech enhancement framework. The proposed approach improves
+interference suppression and reconstruction quality under both matched
+and mismatched conditions without modifying the inference architecture.
 
 ## Installation
 
@@ -19,6 +22,14 @@ conda activate fastudiffse
 
 pip install -r requirements.txt
 ```
+## Repository Structure
+
+├── preprocessing/      Data preparation scripts
+├── eval/               Evaluation scripts and metrics
+├── sgmse/              Diffusion and fusion models
+├── demo.ipynb          Demonstration notebook
+├── train.py            Training entry point
+└── requirements.txt    Python dependencies
 
 ## Data
 
@@ -42,23 +53,26 @@ It could be interesting to take a look at [./preprocessing](./preprocessing) to 
 
 ```bash
 python train.py \
-	--transform_type exponent \
-	--format tcd-timit \
-	--batch_size 8 \
-	--gpus 2 \
-	--regularization_warmup_epochs 100 \
-	--regularization_beta0 1000 \
-	--perceptron_before_fusion \
-	--alpha_t_decay step \
-	--vfeat_processing_order cut_extract \
-	--video_feature_type avhubert \
-	--backbone ncsnpp_continueconcat_attn_masking_noising_av_6m \
-	--fusion concat_attn_masking_light \
-	--no_project_video_feature \
-	--p 0.0 \
-	--fusion_level enc_dec \
-	--run_id av_diffse_late_fusion_avhubert_icp52_6M_warmup_100_beta0_1000_alpha_t_step_unweighted
+	--transform_type exponent \ 			# transformation applied to the audio input STFT 
+	--format tcd-timit \					# dataset
+	--batch_size 8 \						# batchsize		
+	--gpus 2 \								# nb of gpus	
+	--regularization_warmup_epochs 100 \	# nb of warmup epochs before the contrastive loss is applied 
+	--regularization_beta0 1000 \			# value of weight of the contrastive loss beta at the last epoch
+	--perceptron_before_fusion \			# adds linear layer before fusion
+	--alpha_t_decay step \					# how the contrastive loss weight alpha decreases through noising steps
+	--vfeat_processing_order cut_extract \	# how visual input frames are cut to match the nb audio of frames
+	--video_feature_type avhubert \			# the type of visual embeddings used to encode visual input
+	--backbone ncsnpp_continueconcat_attn_masking_noising_av_6m \	# neural network architecture 
+	--fusion concat_attn_masking_light \							# fusion
+	--no_project_video_feature \									# whether a projection layer is added after fusion
+	--p 0.0 \														# audio masking probability
+	--fusion_level enc_dec \										# level at which fusion is performed
+	--run_id av_diffse_late_fusion_avhubert_icp52_6M_warmup_100_beta0_1000_alpha_t_step_unweighted	# name of the checkpoint folder 
 ```
+use `--dummy` for faster debugging
+
+
 
 
 - Training the conditional audio-visual model used in the paper for AV-UDiffSE and AV-UDiffSE+ (Table 1 of the paper)
@@ -87,7 +101,8 @@ python train.py \
 
  
 The checkpoint of the audio-only and the audiovisual diffusion models trained on TCD-TIMIT clean speech in the paper are available following these links:
-- [audiovisual-contrastive-alignment](https://drive.google.com/file/d/1MaDukx37NigLupGUQ0QlzY7D75L0h3yl/view?usp=drive_link)
+- [audiovisual-contrastive-alignment-linear-layer](https://drive.google.com/file/d/1MaDukx37NigLupGUQ0QlzY7D75L0h3yl/view?usp=drive_link)
+- [audiovisual-contrastive-alignment](https://drive.google.com/file/d/1kIg-4Vv26Y2bkW_Pq4BHFySytZ7qD2is/view?usp=drive_link)
 - [audio-only ckpt](https://huggingface.co/jeaneudesAyilo/files_for_fast_UdiffSE/resolve/main/aonly_tcd_speech_modeling_default_28M.ckpt)
 - [audiovisual ckpt](https://huggingface.co/jeaneudesAyilo/files_for_fast_UdiffSE/resolve/main/av_tcd_speech_modeling_concat_attn_masking_light_avhubert_p0_28M_enc_dec.ckpt)
 
@@ -133,10 +148,20 @@ A demo notebook is available at [./demo.ipynb](./demo.ipynb) . This notebook pro
 This repository is mainly derived from  [fast_UdiffSE](https://github.com/jeaneudesAyilo/fast_UdiffSE).
 
 
-## Bibtex
-
+## Citation
+If you find this repository useful, please cite:
 ```bibtex
-The article will be published soon this summer on arxiv, Interspeech and HAL. 
-
-{Colombe Mboungou, Mostafa Sadeghi, Jean-Eudes Ayilo, Romain Serizel. Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement. INTERSPEECH, Sep 2026, Sydney, Australia. ⟨hal-05655180⟩}
+@inproceedings{mboungou:hal-05655180,
+  TITLE = {{Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement}},
+  AUTHOR = {Mboungou, Colombe and Sadeghi, Mostafa and Ayilo, Jean-Eudes and Serizel, Romain},
+  URL = {https://hal.science/hal-05655180},
+  BOOKTITLE = {{INTERSPEECH}},
+  ADDRESS = {Sydney, Australia},
+  YEAR = {2026},
+  MONTH = Sep,
+  KEYWORDS = {unsupervised learning ; low SNR ; robustness ; contrastive learning ; diffusion models ; audio-visual speech enhancement},
+  PDF = {https://hal.science/hal-05655180v1/file/skvrvcjnqhhrwtvbzzkncqqmvyskqykk.pdf},
+  HAL_ID = {hal-05655180},
+  HAL_VERSION = {v1},
+}
 ```

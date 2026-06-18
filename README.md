@@ -151,6 +151,10 @@ This repository is mainly derived from  [fast_UdiffSE](https://github.com/jeaneu
 ## Citation
 If you find this repository useful, please cite:
 ```bibtex
-@inproceedings{Mboungou2026av, title={Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement}, author={Mboungou, Colombe and Sadeghi, Mostafa and Ayilo, Jean-Eude and Serizel, Romai}, booktitle={INTERSPEECH}, year={2026} }
-
+@inproceedings{Mboungou2026av,
+    title={Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement},
+    author={Mboungou, Colombe and Sadeghi, Mostafa and Ayilo, Jean-Eudes and Serizel, Romain},
+    booktitle={INTERSPEECH},
+    year={2026}
+}
 ```

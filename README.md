@@ -25,8 +25,10 @@ pip install -r requirements.txt
 ## Repository Structure
 
 ```
-├── preprocessing/      Data preparation scripts
+├── data_demo/      	Data for the demo notebook
 ├── eval/               Evaluation scripts and metrics
+├── preprocessing/      Data preparation scripts
+├── runs/      			Training scripts
 ├── sgmse/              Diffusion and fusion models
 ├── demo.ipynb          Demonstration notebook
 ├── train.py            Training entry point
@@ -72,7 +74,7 @@ python train.py \
 	--fusion_level enc_dec \										# level at which fusion is performed
 	--run_id av_diffse_late_fusion_avhubert_icp52_6M_warmup_100_beta0_1000_alpha_t_step_unweighted	# name of the checkpoint folder 
 ```
-use `--dummy` for faster debugging
+You can use `--dummy` for faster debugging
 
 
 
@@ -140,10 +142,6 @@ python eval/statistics/compute_metrics.py \
 - In the above command, consider removing the `dnn_mos` argument if MOS metrics are not needed, or if the test set contains short audio files. We can add `--input_metrics` to compute metrics of the non-enhanced noisy speech.
 
 
-## Demo
-
-A demo notebook is available at [./demo.ipynb](./demo.ipynb) . This notebook provides a demonstration of sampling from clean speech prior learned via a diffusion-based generative model unconditionned or conditionned on lip video, followed by speech enhancement of a test noisy speech signal.
-
 
 ## Acknowledgements
 
@@ -153,17 +151,6 @@ This repository is mainly derived from  [fast_UdiffSE](https://github.com/jeaneu
 ## Citation
 If you find this repository useful, please cite:
 ```bibtex
-@inproceedings{mboungou:hal-05655180,
-  TITLE = {{Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement}},
-  AUTHOR = {Mboungou, Colombe and Sadeghi, Mostafa and Ayilo, Jean-Eudes and Serizel, Romain},
-  URL = {https://hal.science/hal-05655180},
-  BOOKTITLE = {{INTERSPEECH}},
-  ADDRESS = {Sydney, Australia},
-  YEAR = {2026},
-  MONTH = Sep,
-  KEYWORDS = {unsupervised learning ; low SNR ; robustness ; contrastive learning ; diffusion models ; audio-visual speech enhancement},
-  PDF = {https://hal.science/hal-05655180v1/file/skvrvcjnqhhrwtvbzzkncqqmvyskqykk.pdf},
-  HAL_ID = {hal-05655180},
-  HAL_VERSION = {v1},
-}
+@inproceedings{Mboungou2026av, title={Audio-visual Contrastive Alignment for Diffusion-based Visual-conditioned Speech Enhancement}, author={Mboungou, Colombe and Sadeghi, Mostafa and Ayilo, Jean-Eude and Serizel, Romai}, booktitle={INTERSPEECH}, year={2026} }
+
 ```

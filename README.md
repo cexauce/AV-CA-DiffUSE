@@ -35,6 +35,10 @@ pip install -r requirements.txt
 └── requirements.txt    Python dependencies
 ```
 
+## Model Architecture
+
+![model_architecture](/model_architecture.png)
+
 ## Data
 
 The video of lips ROI (88 $\times$ 88 and 112 $\times$ 112) for TCD-TIMIT (train/valid/test) and LRS3 test set are provided following the links: 
